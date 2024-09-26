@@ -2,7 +2,8 @@ let regForm=document.querySelector(".register-form");
 let allInput=regForm.querySelectorAll("INPUT");
 let closeBtn=document.querySelector(".btn-close");
 let regList=document.querySelector(".reg-list");
-//console.log(allInput);
+let addBtn=document.querySelector(".add-btn")
+console.log(allInput);
 
  let allRegData=[];
  let url="";
@@ -48,7 +49,7 @@ const getRegData=()=>{
                     <td>${data.email}</td>
                     <td>${data.mobile}</td>
                     <td>
-                      <button index="${index}" class="edit-btn btn btn-primary p-1 px-2"><i class="fa-solid fa-pencil"></i></button>
+                      <button data="${JSON.stringify(data)}" index="${index}" class="edit-btn btn btn-primary p-1 px-2"><i class="fa-solid fa-pencil"></i></button>
                       <button index="${index}" class="delete-btn btn btn-danger p-1 px-2"><i class="fa-solid fa-trash"></i></button>
                     </td>
                   </tr> `;
@@ -56,8 +57,9 @@ const getRegData=()=>{
     action();
 }
 
-// delete data 
+// delete data and update data
 const action=()=>{
+    // delete
 let allDelBtn=regList.querySelectorAll(".delete-btn");
 //console.log(allDelBtn);
 for(let btn of allDelBtn){
@@ -70,7 +72,18 @@ for(let btn of allDelBtn){
         getRegData();
     }
 }
+// update data
+let allEditBtn=regList.querySelectorAll(".edit-btn");
+for(let btn of allEditBtn){
+    btn.onclick=()=>{
+        let index=btn.getAttribute("index");
+        // alert(index);
+        let data=btn.getAttribute("data")
+        addBtn.click();
+    }
 }
+}
+
 getRegData();
 
 // reading photo
