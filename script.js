@@ -56,7 +56,7 @@ const getRegData=()=>{
     action();
 }
 
-// delete
+// delete data 
 const action=()=>{
 let allDelBtn=regList.querySelectorAll(".delete-btn");
 //console.log(allDelBtn);
@@ -66,9 +66,7 @@ for(let btn of allDelBtn){
         //alert(index);
         allRegData.splice(index,1);
         localStorage.setItem("allRegisterData",JSON.stringify(allRegData));
-        swal("Are you sure you want to do this?", {
-            buttons: ["Oh yes!", "Aww yiss!"],
-          });
+        alert("you want to delete");
         getRegData();
     }
 }
